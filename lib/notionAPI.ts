@@ -1,18 +1,5 @@
 import { Client } from "@notionhq/client";
 
-type Post = {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  slug: string;
-  tags: string[];
-};
-
-type allPosts = {
-  allPosts: Post[];
-};
-
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
@@ -30,8 +17,8 @@ export const getAllPost = async () => {
   });
 };
 
-const getPageMetaData = (post: any) => {
-  const getTags = (tags: any[]) => {
+const getPageMetaData = (post) => {
+  const getTags = (tags) => {
     const allTags = tags.map((tag) => {
       return tag.name;
     });
